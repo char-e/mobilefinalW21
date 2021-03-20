@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search">Search</string>
+    <string name="save">Save for Later</string>
+    <string name="read">Full Article</string>
+    <string name="saved">Saved for later!</string>
+</resources>
