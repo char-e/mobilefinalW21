@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="search">Search</string>
-    <string name="save">Save for Later</string>
-    <string name="read">Full Article</string>
-    <string name="saved">Saved for later!</string>
+    <string name="app_name">Nouveau démon 😈</string>
+    <string name="search">Rechercher</string>
+    <string name="close">Fermer</string>
+    <string name="save">Économisez pour plus tard</string>
+    <string name="read">Article complet</string>
+    <string name="saved">Enregistré pour plus tard</string>
+    <string name="free_articles">"Articles gratuits restants: "</string>
+    <string name="upgrade">Déverrouillez plus</string>
 </resources>
