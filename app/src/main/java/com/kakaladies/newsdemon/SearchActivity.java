@@ -1,28 +1,18 @@
 package com.kakaladies.newsdemon;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -31,11 +21,6 @@ import java.util.ArrayList;
  * SearchActivity renders a list of Articles based on a query term and allows users to view and save articles
  */
 public class SearchActivity extends AppCompatActivity {
-
-    FavouritesFragment fragment;
-
-    ArticleRepository articleRepository;
-
 
     /**
      * onActivityResult code for viewing an Article
@@ -67,6 +52,7 @@ public class SearchActivity extends AppCompatActivity {
      */
     private int remaining;
 
+    FavouritesFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +63,6 @@ public class SearchActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(ARTICLES_REMAINING, MODE_PRIVATE);
         remaining = prefs.getInt(ARTICLES_REMAINING, 5);
 
-        articleRepository = new ArticleRepository(this);
 
         articles = new ArrayList<>();
         this.listAdapter = initializeListAdapter();
@@ -85,31 +70,14 @@ public class SearchActivity extends AppCompatActivity {
         articleList = findViewById(R.id.articleList);
         articleList.setAdapter(this.listAdapter);
 
-        String query = ((EditText) findViewById(R.id.search_query)).getText().toString();
+        String query = ((EditText)findViewById(R.id.search_query)).getText().toString();
 
         loadArticles(query);
-        load();
-
-
         fragment = new FavouritesFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.frame, fragment)
                 .commit();
-
-
-
-    }
-
-
-
-    /**
-     * Fills list with existing repository data
-     * */
-    private void load() {
-        articles.addAll(articleRepository.findAll());
-        listAdapter.notifyDataSetChanged();
-
     }
 
     /**
@@ -124,7 +92,6 @@ public class SearchActivity extends AppCompatActivity {
         this.listAdapter.notifyDataSetChanged();
 
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
-
     }
 
     @Override
@@ -150,13 +117,6 @@ public class SearchActivity extends AppCompatActivity {
      * Create List adapter to inflate Articles into Views
      * @return an adapter to associate with ListView
      */
-
-    public void addArticle(String text) {
-        Article article = new Article();
-        articles.add(articleRepository.save(article));
-        listAdapter.notifyDataSetChanged();
-    }
-
     private BaseAdapter initializeListAdapter() {
         return new BaseAdapter() {
             private void showDetailsDialog(Article article) {
