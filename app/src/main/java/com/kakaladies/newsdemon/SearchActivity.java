@@ -79,20 +79,15 @@ public class SearchActivity extends AppCompatActivity {
 
         loadArticles(query);
         load();
-        articleList.setOnItemClickListener((list, item, position, id) -> {
-            Bundle dataToPass = new Bundle();
-            Article article = articles.get(position);
 
 
-                fragment = new FavouritesFragment();
-                fragment.setArguments(dataToPass);
-                getSupportFragmentManager()
+        fragment = new FavouritesFragment();
+        getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.frame, fragment)
+                        .add(R.id.frame, fragment)
                         .commit();
 
 
-        });
 
     }
     /**

@@ -4,4 +4,5 @@
     <string name="save">Save for Later</string>
     <string name="read">Full Article</string>
     <string name="saved">Saved for later!</string>
+    <string name="favouriteslist">Favourites List</string>
 </resources>

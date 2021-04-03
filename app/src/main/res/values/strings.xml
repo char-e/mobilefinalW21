@@ -7,6 +7,6 @@
     <string name="saved">Saved for later</string>
     <string name="free_articles">"Free articles remaining: "</string>
     <string name="upgrade">Unlock more</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="favouriteslist">Favourites List</string>
 </resources>

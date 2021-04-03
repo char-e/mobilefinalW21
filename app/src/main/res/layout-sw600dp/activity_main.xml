@@ -49,7 +49,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ListView
-            android:layout_width="400dp"
+            android:layout_width="500dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/constraint"
             android:layout_alignParentBottom="true"

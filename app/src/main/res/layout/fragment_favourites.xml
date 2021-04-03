@@ -5,12 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".FavouritesFragment"
     android:id="@+id/frame">
-
-    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/favouriteslist"
+        android:id="@+id/title"
+        />
     <ListView
         android:id="@+id/favouritesList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/title"
         />
-
+</RelativeLayout>
 </FrameLayout>
