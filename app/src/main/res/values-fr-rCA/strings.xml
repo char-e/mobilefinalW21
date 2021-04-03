@@ -5,4 +5,6 @@
     <string name="read">Full Article</string>
     <string name="saved">Saved for later!</string>
     <string name="favouriteslist">Favourites List</string>
+    <string name="open">Open</string>
+   <string name="toolbarMenuClick"> Toolbar Click</string>
 </resources>

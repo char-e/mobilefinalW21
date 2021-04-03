@@ -1,18 +1,28 @@
 package com.kakaladies.newsdemon;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -75,7 +85,7 @@ public class SearchActivity extends AppCompatActivity {
         articleList = findViewById(R.id.articleList);
         articleList.setAdapter(this.listAdapter);
 
-        String query = ((EditText)findViewById(R.id.search_query)).getText().toString();
+        String query = ((EditText) findViewById(R.id.search_query)).getText().toString();
 
         loadArticles(query);
         load();
@@ -83,13 +93,16 @@ public class SearchActivity extends AppCompatActivity {
 
         fragment = new FavouritesFragment();
         getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.frame, fragment)
-                        .commit();
+                .beginTransaction()
+                .add(R.id.frame, fragment)
+                .commit();
 
 
 
     }
+
+
+
     /**
      * Fills list with existing repository data
      * */
