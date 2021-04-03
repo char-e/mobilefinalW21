@@ -51,7 +51,9 @@ public class SearchActivity extends AppCompatActivity {
      * How many more articles the user can view before being required to purchase upgrade
      */
     private int remaining;
-
+    /**
+     * Created an object of fragment that can be inflated with the view
+     */
     FavouritesFragment fragment;
 
     @Override
@@ -73,6 +75,9 @@ public class SearchActivity extends AppCompatActivity {
         String query = ((EditText)findViewById(R.id.search_query)).getText().toString();
 
         loadArticles(query);
+        /**
+         * Use fragment object to inflate view with Fragment manager
+         */
         fragment = new FavouritesFragment();
         getSupportFragmentManager()
                 .beginTransaction()
