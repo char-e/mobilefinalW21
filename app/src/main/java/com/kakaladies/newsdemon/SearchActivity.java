@@ -22,6 +22,11 @@ import java.util.ArrayList;
  */
 public class SearchActivity extends AppCompatActivity {
 
+    FavouritesFragment fragment;
+
+    ArticleRepository articleRepository;
+
+
     /**
      * onActivityResult code for viewing an Article
      */
@@ -62,6 +67,7 @@ public class SearchActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(ARTICLES_REMAINING, MODE_PRIVATE);
         remaining = prefs.getInt(ARTICLES_REMAINING, 5);
 
+        articleRepository = new ArticleRepository(this);
 
         articles = new ArrayList<>();
         this.listAdapter = initializeListAdapter();
@@ -72,6 +78,28 @@ public class SearchActivity extends AppCompatActivity {
         String query = ((EditText)findViewById(R.id.search_query)).getText().toString();
 
         loadArticles(query);
+        load();
+        articleList.setOnItemClickListener((list, item, position, id) -> {
+            Bundle dataToPass = new Bundle();
+            Article article = articles.get(position);
+
+
+                fragment = new FavouritesFragment();
+                fragment.setArguments(dataToPass);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame, fragment)
+                        .commit();
+
+
+        });
+
+    }
+
+    private void load() {
+        articles.addAll(articleRepository.findAll());
+        listAdapter.notifyDataSetChanged();
+
     }
 
     /**
@@ -86,6 +114,7 @@ public class SearchActivity extends AppCompatActivity {
         this.listAdapter.notifyDataSetChanged();
 
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
+
     }
 
     @Override
@@ -111,6 +140,13 @@ public class SearchActivity extends AppCompatActivity {
      * Create List adapter to inflate Articles into Views
      * @return an adapter to associate with ListView
      */
+
+    public void addArticle(String text) {
+        Article article = new Article();
+        articles.add(articleRepository.save(article));
+        listAdapter.notifyDataSetChanged();
+    }
+
     private BaseAdapter initializeListAdapter() {
         return new BaseAdapter() {
             private void showDetailsDialog(Article article) {
