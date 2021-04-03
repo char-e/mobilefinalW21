@@ -95,7 +95,9 @@ public class SearchActivity extends AppCompatActivity {
         });
 
     }
-
+    /**
+     * Fills list with existing repository data
+     * */
     private void load() {
         articles.addAll(articleRepository.findAll());
         listAdapter.notifyDataSetChanged();
