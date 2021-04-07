@@ -13,10 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsDemon">
-
-
-
-
+        <activity android:name=".FavouritesActivity"></activity>
+        <activity android:name=".UnlockActivity" />
         <activity android:name=".SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

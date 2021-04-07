@@ -1,26 +1,39 @@
 package com.kakaladies.newsdemon;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
  * SearchActivity renders a list of Articles based on a query term and allows users to view and save articles
  */
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
     /**
      * onActivityResult code for viewing an Article
@@ -78,11 +91,23 @@ public class SearchActivity extends AppCompatActivity {
         /**
          * Use fragment object to inflate view with Fragment manager
          */
-        fragment = new FavouritesFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.frame, fragment)
-                .commit();
+        //fragment = new FavouritesFragment();
+        //getSupportFragmentManager()
+        //        .beginTransaction()
+        //        .add(R.id.frame, fragment)
+        //        .commit();
+
+        // Toolbar stuff
+        Toolbar toolbar = (Toolbar)findViewById(R.id.navigation_toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     /**
@@ -93,8 +118,7 @@ public class SearchActivity extends AppCompatActivity {
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
         ArticleLoader articleLoader = new ArticleLoader();
-        this.articles = articleLoader.load(query);
-        this.listAdapter.notifyDataSetChanged();
+        this.articles = articleLoader.load(this.listAdapter);
 
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
     }
@@ -106,7 +130,7 @@ public class SearchActivity extends AppCompatActivity {
         Snackbar snackbar = Snackbar.make(findViewById(R.id.root), getString(R.string.free_articles) + this.remaining, 5000);
 
         snackbar.setAction(R.string.upgrade, v-> {
-            // TODO: navigate to unlock screen
+            startActivity(new Intent(this, UnlockActivity.class));
         });
 
         snackbar.show();
@@ -171,4 +195,11 @@ public class SearchActivity extends AppCompatActivity {
             }
         };
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+
 }

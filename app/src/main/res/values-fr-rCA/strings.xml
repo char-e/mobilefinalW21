@@ -7,4 +7,6 @@
     <string name="favouriteslist">Favourites List</string>
     <string name="open">Open</string>
    <string name="toolbarMenuClick"> Toolbar Click</string>
+    <string name="close">Close</string>
+    <string name="favourites">Favourites</string>
 </resources>
