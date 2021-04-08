@@ -17,4 +17,22 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="favourites">Favourites</string>
+    <string name="title_activity_articles">ArticlesActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="purchase">Purchase</string>
+    <string name="searchHelp">You can see a list of articles in this page. Click one for options</string>
+    <string name="favouritesHelp">Help</string>
+    <string name="favouritesHelpText">Click on an item to open a DialogFragment to Delete it</string>
+    <string name="ccNumber">Credit Card Number</string>
+    <string name="mm_yy">MM / YY</string>
+    <string name="cvv">CVV</string>
 </resources>

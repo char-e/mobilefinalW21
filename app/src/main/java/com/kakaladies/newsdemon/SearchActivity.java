@@ -7,12 +7,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -85,9 +89,8 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
         articleList = findViewById(R.id.articleList);
         articleList.setAdapter(this.listAdapter);
 
-        String query = ((EditText)findViewById(R.id.search_query)).getText().toString();
 
-        loadArticles(query);
+        loadArticles();
         /**
          * Use fragment object to inflate view with Fragment manager
          */
@@ -110,17 +113,24 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+
     /**
      * Loads articles to be displayed given a search query
      * @param query Term to filter loaded articles by
      */
-    private void loadArticles(String query) {
+    private void loadArticles() {
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
         ArticleLoader articleLoader = new ArticleLoader();
-        this.articles = articleLoader.load(this.listAdapter);
+        this.articles = articleLoader.load(this.listAdapter, findViewById(R.id.progressBar));
 
-        findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -198,7 +208,43 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        switch (item.getItemId()) {
+            case R.id.nav_to_favourites:
+                startActivity(new Intent(this, FavouritesActivity.class));
+                break;
+
+        }
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch(item.getItemId()) {
+            case R.id.purchaseButton:
+                startActivity(new Intent(this, UnlockActivity.class));
+                break;
+        }
+
+        switch(item.getItemId()) {
+            case R.id.helpButton:
+                AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this);
+                builder.setMessage(R.string.searchHelp)
+                        .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancelled the dialog
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                builder.create().show();
+                break;
+        }
+
+
+        return true;
     }
 
 

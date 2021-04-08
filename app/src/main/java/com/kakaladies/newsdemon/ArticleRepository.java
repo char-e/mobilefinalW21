@@ -30,11 +30,14 @@ public class ArticleRepository {
     public Article save(Article article) {
         db = helper.getWritableDatabase();
         ContentValues row = new ContentValues();
-        row.put(DatabaseHelper.COL_TEXT, article.getHeadline());
+        row.put(DatabaseHelper.COL_HEADLINE, article.getHeadline());
+        row.put(DatabaseHelper.COL_DESCRIPTION, article.getDescription());
+        row.put(DatabaseHelper.COL_URL, article.getUrl());
+        row.put(DatabaseHelper.COL_PUBLISHED, article.getPublished());
 
-        row.put(DatabaseHelper.COL_DESC, article.getDescription());
 
         long id = db.insert(DatabaseHelper.TABLE_NAME, null, row);
+        Log.i(this.getClass().toString(), String.valueOf(id));
         db.close();
         return new Article();
     }
@@ -48,8 +51,10 @@ public class ArticleRepository {
         db = helper.getReadableDatabase();
         String[] columns = {
                 DatabaseHelper.COL_ID,
-
-                DatabaseHelper.COL_TEXT
+                DatabaseHelper.COL_HEADLINE,
+                DatabaseHelper.COL_DESCRIPTION,
+                DatabaseHelper.COL_URL,
+                DatabaseHelper.COL_PUBLISHED,
         };
         Cursor results = db.query(
                 false,
@@ -62,14 +67,22 @@ public class ArticleRepository {
                 null,
                 null
         );
+
+        int idCol = results.getColumnIndex(DatabaseHelper.COL_ID);
+        int headlineCol = results.getColumnIndex(DatabaseHelper.COL_HEADLINE);
+        int descriptionCol = results.getColumnIndex(DatabaseHelper.COL_DESCRIPTION);
+        int urlCol = results.getColumnIndex(DatabaseHelper.COL_URL);
+        int publishedCol = results.getColumnIndex(DatabaseHelper.COL_PUBLISHED);
+
         List<Article> articles = new ArrayList<>(results.getCount());
         if (results.getCount() > 0) {
             while (results.moveToNext()) {
-                Article article;
-                article = new Article();
-
-
-                articles.add(article);
+                articles.add(new Article()
+                        .setHeadline(results.getString(headlineCol))
+                        .setDescription(results.getString(descriptionCol))
+                        .setUrl(results.getString(urlCol))
+                        .setPublished(results.getString(publishedCol))
+                );
             }
             results.moveToFirst();
             printCursor(results, db.getVersion());
@@ -87,7 +100,7 @@ public class ArticleRepository {
      */
     public void delete(Article article) {
         db = helper.getWritableDatabase();
-        db.delete(DatabaseHelper.TABLE_NAME, "_id=?", new String[]{article.getHeadline()});
+        db.delete(DatabaseHelper.TABLE_NAME, "HEADLINE=?", new String[]{article.getHeadline()});
         db.close();
     }
 

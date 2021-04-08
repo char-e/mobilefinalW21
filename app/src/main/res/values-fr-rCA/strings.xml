@@ -9,4 +9,10 @@
    <string name="toolbarMenuClick"> Toolbar Click</string>
     <string name="close">Close</string>
     <string name="favourites">Favourites</string>
+    <string name="searchHelp">You can see a list of articles in this page. Click one for options</string>
+    <string name="favouritesHelp">Help</string>
+    <string name="favouritesHelpText">Click on an item to open a DialogFragment to Delete it</string>
+    <string name="ccNumber">Credit Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="purchase">Purchase</string>
 </resources>

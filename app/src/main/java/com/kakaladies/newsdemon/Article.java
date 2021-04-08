@@ -7,10 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
+
 /**
  * A news Article
  */
-public class Article {
+public class Article implements Serializable {
 
     /**
      * Article headline
@@ -43,7 +45,7 @@ public class Article {
     public void save(Context activity) {
         Toast.makeText(activity, R.string.saved, Toast.LENGTH_SHORT).show();
 
-        // TODO: Save to list of saved articles
+        new ArticleRepository(activity).save(this);
     }
 
     /**
@@ -128,5 +130,9 @@ public class Article {
      */
     public String getPublished() {
         return published;
+    }
+
+    public void delete(Context activity) {
+        new ArticleRepository(activity).delete(this);
     }
 }

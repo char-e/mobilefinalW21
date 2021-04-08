@@ -28,21 +28,27 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buy15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="15 Articles - $9.99" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buy50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="50 Articles - $19.99" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/buy1000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1000 Articles - $45.00 (Best Value)" />
+
+        <Button
+            android:id="@+id/unlockHelpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/favouritesHelp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
