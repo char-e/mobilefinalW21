@@ -27,6 +27,7 @@
         </activity>
         <activity android:name=".UnlockActivity" />
         <activity android:name=".FavouritesActivity" />
+        <activity android:name=".WeatherForecast"/>
     </application>
 
 </manifest>

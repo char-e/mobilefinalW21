@@ -2,7 +2,7 @@
     <string name="app_name">News Demon 😈</string>
     <string name="search">Search</string>
     <string name="close">Close</string>
-    <string name="save">Save for Later</string>
+    <string name="save">Add to Favourites</string>
     <string name="read">Full Article</string>
     <string name="saved">Saved for later</string>
     <string name="free_articles">"Free articles remaining: "</string>
