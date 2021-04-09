@@ -35,4 +35,9 @@
     <string name="ccNumber">Credit Card Number</string>
     <string name="mm_yy">MM / YY</string>
     <string name="cvv">CVV</string>
+    <string name="title_activity_weather_forecast">WeatherForecast</string>
+    <string name="currentTemp">Current temp</string>
+    <string name="minTemp">Min temp</string>
+    <string name="maxTemp">Max tmep</string>
+    <string name="uvRating">UV Rating</string>
 </resources>
