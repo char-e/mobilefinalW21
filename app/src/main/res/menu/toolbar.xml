@@ -15,13 +15,23 @@
         android:title="@string/purchase"
         android:orderInCategory="100"
         app:showAsAction="always" />
-
-
+    <item
+        android:id="@+id/weatherButton"
+        android:icon="@drawable/freeicon"
+        android:title="@string/weather"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/helpButton"
         android:icon="@drawable/confused"
         android:title="@string/purchase"
+        android:orderInCategory="101"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/searchButton"
+        android:icon="@drawable/search"
+        android:title="@string/search"
         android:orderInCategory="100"
         app:showAsAction="always" />
 

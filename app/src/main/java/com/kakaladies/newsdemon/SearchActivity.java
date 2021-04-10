@@ -223,6 +223,13 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
                 startActivity(intent);
                 break;
 
+            case R.id.nav_to_weather:
+                startActivity(new Intent(this, WeatherForecast.class));
+                break;
+            case R.id.nav_to_search:
+                startActivity(new Intent(this, SearchActivity.class));
+                break;
+
         }
 
         return true;

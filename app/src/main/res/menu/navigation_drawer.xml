@@ -11,5 +11,11 @@
     <item
         android:id="@+id/nav_to_payment"
         android:title="@string/quickbuy" />
+    <item
+        android:id="@+id/nav_to_weather"
+        android:title="@string/weather" />
+    <item
+        android:id="@+id/nav_to_search"
+        android:title="@string/search" />
 
 </menu>
