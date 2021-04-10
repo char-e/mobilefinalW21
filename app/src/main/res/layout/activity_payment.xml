@@ -53,5 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/purchase" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help"
+        android:id="@+id/helpButton"
+        />
 
 </LinearLayout>

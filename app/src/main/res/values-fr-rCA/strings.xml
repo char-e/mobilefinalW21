@@ -1,28 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="search">Search</string>
-    <string name="save">Save for Later</string>
-    <string name="read">Full Article</string>
-    <string name="saved">Saved for later!</string>
-    <string name="favouriteslist">Favourites List</string>
-    <string name="open">Open</string>
-   <string name="toolbarMenuClick"> Toolbar Click</string>
-    <string name="close">Close</string>
-    <string name="favourites">Favourites</string>
-    <string name="weather">Weather</string>
-    <string name="purchase">Purchase</string>
-    <string name="searchHelp">You can see a list of articles in this page. Click one for options</string>
-    <string name="favouritesHelp">Help</string>
-    <string name="favouritesHelpText">Click on an item to open a DialogFragment to Delete it</string>
-    <string name="ccNumber">Credit Card Number</string>
-    <string name="mm_yy">MM / YY</string>
+    <string name="app_name">News Demon 😈</string>
+    <string name="search">Rechercher</string>
+    <string name="close">Fermer</string>
+    <string name="save">Ajouter aux favoris</string>
+    <string name="read">Article complet</string>
+    <string name="saved">Enregistré pour plus tard</string>
 
+    <string name="free_articles">« Articles gratuits restants: »</string>
+    <string name="upgrade">Déverrouillez plus</string>
+    <string name="open">Ouvrir</string>
+    <string name="favouriteslist">Liste des favoris</string>
+    <string name="toolbarMenuClick"> Cliquez sur la barre d’outils</string>
+    <string name="title_activity_1">Activity1</string>
+
+    <string name="favourites">Les favoris</string>
+    <string name="title_activity_articles">ArticlesActivity</string>
+    <string name="navigation_drawer_open">Tiroir de navigation ouvert</string>
+    <string name="navigation_drawer_close">Tiroir de navigation proche</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">En-tête de navigation</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="weather">Temps</string>
+    <string name="help">Aide</string>
+    <string name="menu_home">Domicile</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="purchase">Achat</string>
+    <string name="searchHelp">Vous pouvez voir une liste d’articles dans cette page. Cliquez sur un pour les options</string>
+    <string name="favouritesHelp">Aide</string>
+    <string name="favouritesHelpText">Cliquez sur un élément pour ouvrir un DialogFragment pour le supprimert</string>
+    <string name="ccNumber">Numéro de carte de crédit</string>
+    <string name="mm_yy">MM / YY</string>
     <string name="cvv">CVV</string>
     <string name="title_activity_weather_forecast">WeatherForecast</string>
-    <string name="currentTemp">Current temp</string>
+    <string name="currentTemp">Maintenant</string>
     <string name="minTemp">Min temp</string>
     <string name="maxTemp">Max tmep</string>
-    <string name="uvRating">UV Rating</string>
-    <string name="unlock">Unlock more Articles</string>
-    <string name="quickbuy">Express Purchase 15 Articles</string>
+    <string name="uvRating">UV</string>
+    <string name="unlock">Débloquer plus d’articles</string>
+    <string name="quickbuy">Achat express 15 articles</string>
+    <string name="weatherhelptext">Cette page affiche votre météo actuelle.</string>
+    <string name="paymenthelptext">Vous pouvez acheter plus d’articles instantanément ici.</string>
 </resources>

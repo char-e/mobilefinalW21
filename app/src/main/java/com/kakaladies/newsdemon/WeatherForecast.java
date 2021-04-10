@@ -1,6 +1,8 @@
 package com.kakaladies.newsdemon;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
@@ -8,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,17 +38,37 @@ public class WeatherForecast extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
 
+
         findViewById(R.id.progress).setVisibility(View.VISIBLE);
 
-        ForecastQuery forecast = new ForecastQuery();
+        findViewById(R.id.helpButton).setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(WeatherForecast.this);
+            builder.setMessage(R.string.weatherhelptext)
+                    .setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create().show();
+
+        });
+
+
+                        ForecastQuery forecast = new ForecastQuery();
         forecast.execute(
                 "https://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=xml&units=metric");
+
+
+
     }
+
 
     private class ForecastQuery extends AsyncTask<String, Integer, String> {
 
         private String uv, minTemp, maxTemp, currentTemp;
         private Bitmap weatherPic;
+
 
         @Override
         protected String doInBackground(String... strings) {
@@ -171,5 +194,6 @@ public class WeatherForecast extends AppCompatActivity {
             ImageView weather = findViewById(R.id.weatherImage);
             weather.setImageBitmap(weatherPic);
         }
+
     }
 }
