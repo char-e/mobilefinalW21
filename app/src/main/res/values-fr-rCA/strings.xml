@@ -22,4 +22,6 @@
     <string name="minTemp">Min temp</string>
     <string name="maxTemp">Max tmep</string>
     <string name="uvRating">UV Rating</string>
+    <string name="unlock">Unlock more Articles</string>
+    <string name="quickbuy">Express Purchase 15 Articles</string>
 </resources>

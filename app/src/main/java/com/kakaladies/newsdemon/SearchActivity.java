@@ -213,6 +213,16 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
                 startActivity(new Intent(this, FavouritesActivity.class));
                 break;
 
+            case R.id.nav_to_unlock:
+                startActivity(new Intent(this, UnlockActivity.class));
+                break;
+
+            case R.id.nav_to_payment:
+                Intent intent = new Intent(this, PaymentActivity.class);
+                intent.putExtra("Message", "Authorize $9.99 charge?");
+                startActivity(intent);
+                break;
+
         }
 
         return true;
@@ -227,9 +237,9 @@ public class SearchActivity extends AppCompatActivity  implements NavigationView
             case R.id.purchaseButton:
                 startActivity(new Intent(this, UnlockActivity.class));
                 break;
-        }
-
-        switch(item.getItemId()) {
+            case R.id.favouriteButton:
+                startActivity(new Intent(this, FavouritesActivity.class));
+                break;
             case R.id.helpButton:
                 AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this);
                 builder.setMessage(R.string.searchHelp)
